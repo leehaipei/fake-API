@@ -4,6 +4,7 @@ var path = require('path');
 // var logger = require('morgan');
 var bodyParser = require('body-parser');
 var logger = require('./common/logger');
+var dataChecker = require('./common/dataChecker');
 
 var indexRouter = require('./routes/index');
 
@@ -24,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use((req, res, next) => logger(req, res, next));
+app.use((req, res, next) => dataChecker(req, res, next));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
