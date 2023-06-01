@@ -7,10 +7,12 @@ const log = console.log;
 function dataChecker(req, res, next) {
 
     const url = req.originalUrl.replace(/\//g, "=").slice(1)
+    const path = appRoot.path + "/data/" + url + ".js"
+    const _path = (appRoot.path + "/data/").replace(/\\/g, "/")
 
-    fs.access(appRoot.path + "/data/" + url + ".js", (err) => {
+    fs.access(path, (err) => {
         if (err) {
-            fse.writeFile(appRoot.path + "/data/" + url + ".js",
+            fse.writeFile(path,
                 `const data = {
 
 }
@@ -21,12 +23,14 @@ module.exports = data`
                     if (err) {
                         log(`${chalk.bgRed("创建返回数据文件失败")}`);
                         res.json({
-                            message: "创建返回数据文件失败"
+                            message: "创建返回数据文件失败",
+                            path: _path
                         });
                     } else {
                         log(`${chalk.bgGreen("数据文件已创建，请填写返回数据")}`);
                         res.json({
-                            message: "数据文件已创建，请填写返回数据"
+                            message: "数据文件已创建，请填写返回数据",
+                            path: _path
                         });
                     }
                 })
