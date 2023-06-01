@@ -31,16 +31,7 @@ module.exports = data`
                     }
                 })
         } else {
-            const data = require(appRoot.path + "/data/" + url + ".js")
-            const arr = Object.keys(data)
-            if (arr.length > 0) {
-                next();
-            } else {
-                log(`${chalk.red("返回数据文件未填写内容")}`);
-                res.json({
-                    message: "返回数据文件未填写内容"
-                });
-            }
+            next();
         }
     })
 }

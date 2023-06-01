@@ -5,8 +5,9 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var logger = require('./common/logger');
 var dataChecker = require('./common/dataChecker');
+var returnData = require('./common/returnData');
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 
 var app = express();
 
@@ -26,12 +27,13 @@ app.set('view engine', 'ejs');
 
 app.use((req, res, next) => logger(req, res, next));
 app.use((req, res, next) => dataChecker(req, res, next));
+app.use((req, res, next) => returnData(req, res, next));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-app.use('*', indexRouter);
+// app.use('*', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
