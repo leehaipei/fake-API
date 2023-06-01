@@ -8,7 +8,7 @@ var app = require('../app');
 var debug = require('debug')('my-node-server:server');
 var http = require('http');
 
-var { server_port } = require('../config/index.js')
+var { server_port } = require('../config')
 
 /**
  * Get port from environment and store in Express.

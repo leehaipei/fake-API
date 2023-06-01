@@ -1,10 +1,11 @@
 const chalk = require('chalk');
 const appRoot = require('app-root-path');
 const log = console.log;
+const baseUrl = require('../common/baseUrl')
 
 function returnData(req, res, next) {
 
-    const url = req.originalUrl.split("?")[0].replace(/\//g, "=").slice(1)
+    const url = baseUrl(req.originalUrl).replace(/\//g, "=").slice(1)
     const path = appRoot.path + "/data/" + url + ".js"
     const _path = (appRoot.path + "/data/").replace(/\\/g, "/")
 

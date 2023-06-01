@@ -3,9 +3,9 @@ var express = require('express');
 var path = require('path');
 // var logger = require('morgan');
 var bodyParser = require('body-parser');
-var logger = require('./common/logger');
-var dataChecker = require('./common/dataChecker');
-var returnData = require('./common/returnData');
+var logger = require('./middleWare/logger');
+var dataChecker = require('./middleWare/dataChecker');
+var returnData = require('./middleWare/returnData');
 
 // var indexRouter = require('./routes/index');
 

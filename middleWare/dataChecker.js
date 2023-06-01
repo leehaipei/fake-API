@@ -2,11 +2,13 @@ const fs = require('fs');
 const chalk = require('chalk');
 const fse = require('fs-extra');
 const appRoot = require('app-root-path');
+
 const log = console.log;
+const baseUrl = require('../common/baseUrl')
 
 function dataChecker(req, res, next) {
 
-    const url = req.originalUrl.split("?")[0].replace(/\//g, "=").slice(1)
+    const url = baseUrl(req.originalUrl).replace(/\//g, "=").slice(1)
     const path = appRoot.path + "/data/" + url + ".js"
     const _path = (appRoot.path + "/data/").replace(/\\/g, "/")
 
