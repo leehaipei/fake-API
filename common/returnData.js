@@ -15,7 +15,7 @@ function returnData(req, res, next) {
     if (arr.length > 0) {
         res.json({ ...data });
     } else {
-        log(`${chalk.red("返回数据文件未填写内容")}`);
+        log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
         res.json({
             message: "返回数据文件未填写内容",
             path: _path

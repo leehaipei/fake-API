@@ -5,7 +5,7 @@ const log = console.log;
 
 function logger(req, res, next) {
 
-    log(`${chalk.bgBlue(req.method)} ${chalk.cyan(req.originalUrl)} ${chalk.bgBlack(moment().format('YYYY/MM/DD HH:mm:ss'))}`);
+    log(`${chalk.blue(req.method)} ${chalk.cyan(req.originalUrl)} ${chalk.bgBlack(moment().format('YYYY/MM/DD HH:mm:ss'))}`);
 
     next();
 
