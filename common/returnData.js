@@ -4,7 +4,7 @@ const log = console.log;
 
 function returnData(req, res, next) {
 
-    const url = req.originalUrl.replace(/\//g, "=").slice(1)
+    const url = req.originalUrl.split("?")[0].replace(/\//g, "=").slice(1)
     const path = appRoot.path + "/data/" + url + ".js"
     const _path = (appRoot.path + "/data/").replace(/\\/g, "/")
 
