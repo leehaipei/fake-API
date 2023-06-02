@@ -24,7 +24,8 @@ function returnData(req, res, next) {
         log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
         res.json({
             message: "返回数据文件未填写内容",
-            path: _path
+            path: _path,
+            file: url + "." + data_mode
         });
     }
 
