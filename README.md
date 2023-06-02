@@ -2,4 +2,8 @@
 
 
 
-### http://localhost:996/***
+### npm i
+
+### npm start
+
+### 访问 http://localhost:996/
