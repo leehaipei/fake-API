@@ -1,6 +1,5 @@
 const chalk = require('chalk');
 
-const log = console.log;
 const readData = require('../common/readData')
 
 const { data_mode } = require('../config')
@@ -17,7 +16,7 @@ function returnData(req, res, next) {
     if (arr.length > 0) {
         res.json({ ...data });
     } else {
-        log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
+        console.log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
         res.json({
             message: "返回数据文件未填写内容",
             file: FA_path.file,

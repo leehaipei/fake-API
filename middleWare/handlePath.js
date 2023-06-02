@@ -2,7 +2,7 @@ const appRoot = require('app-root-path');
 
 const baseUrl = require('../common/baseUrl')
 
-const { data_mode } = require('../config')
+const { data_mode, data_folder_name } = require('../config')
 
 
 function handlePath(req, res, next) {
@@ -11,7 +11,7 @@ function handlePath(req, res, next) {
     const fileName = url.replace(/\//g, "=").slice(1)
     const file = fileName + "." + data_mode
     const appRootPath = appRoot.path
-    const dataFilePath = appRootPath + "/data/"
+    const dataFilePath = appRootPath + "/" + data_folder_name + "/"
     const fileAbsolutePath = dataFilePath + file
     const folderPath = dataFilePath.replace(/\\/g, "/")
 
