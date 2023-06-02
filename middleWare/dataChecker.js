@@ -12,6 +12,11 @@ function dataChecker(req, res, next) {
 
     fs.access(FA_path.fileAbsolutePath, (err) => {
         if (err) {
+
+            if (!fs.existsSync(FA_path.dataFilePath)) {
+                fs.mkdirSync(FA_path.dataFilePath);
+            }
+
             fse.writeFile(FA_path.fileAbsolutePath, dataTemplate(data_mode), (err) => {
                 if (err) {
                     console.log(`${chalk.bgRed("创建返回数据文件失败")}`);
