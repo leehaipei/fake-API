@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 // var logger = require('morgan');
 var bodyParser = require('body-parser');
+var handlePath = require('./middleWare/handlePath');
 var logger = require('./middleWare/logger');
 var dataChecker = require('./middleWare/dataChecker');
 var returnData = require('./middleWare/returnData');
@@ -25,6 +26,7 @@ app.all('*', function (req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use((req, res, next) => handlePath(req, res, next));
 app.use((req, res, next) => logger(req, res, next));
 app.use((req, res, next) => dataChecker(req, res, next));
 app.use((req, res, next) => returnData(req, res, next));
