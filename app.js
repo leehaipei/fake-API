@@ -26,6 +26,15 @@ app.all('*', function (req, res, next) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(function (req, res, next) {
+  if (req.originalUrl === '/') {
+    res.status(200);
+    res.render('index', { message: 'welcome' });
+  } else {
+    next();
+  }
+});
+
 app.use((req, res, next) => handlePath(req, res, next));
 app.use((req, res, next) => logger(req, res, next));
 app.use((req, res, next) => dataChecker(req, res, next));
