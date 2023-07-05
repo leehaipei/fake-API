@@ -34,15 +34,15 @@ app.use(function (req, res, next) {
     next();
   }
 });
-
-app.use((req, res, next) => handlePath(req, res, next));
-app.use((req, res, next) => logger(req, res, next));
-app.use((req, res, next) => dataChecker(req, res, next));
-app.use((req, res, next) => returnData(req, res, next));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+app.use((req, res, next) => handlePath(req, res, next));
+app.use((req, res, next) => logger(req, res, next));
+app.use((req, res, next) => dataChecker(req, res, next));
+app.use((req, res, next) => returnData(req, res, next));
+
 
 // app.use('*', indexRouter);
 

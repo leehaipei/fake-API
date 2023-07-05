@@ -1,15 +1,16 @@
 const readJsonData = require('./readJsonData')
 
-function readData(type, path) {
+function readData(type, path, params) {
 
     let data = undefined
 
     switch (type) {
-        case "json":            
+        case "json":
             data = readJsonData(path)
             break;
         case "js":
-            data = require(path)
+            const dataFun = require(path)
+            data = dataFun(params)
             break;
         default:
             break;

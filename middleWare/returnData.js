@@ -7,9 +7,29 @@ const { data_mode } = require('../config')
 
 function returnData(req, res, next) {
 
+    let params = {}
+
+    switch (req.method) {
+        case 'GET':
+            params = req.query
+            break;
+        case 'POST':
+            params = req.body
+            break;
+        case 'PUT':
+            params = req.body
+            break;
+        case 'DELETE':
+            params = req.query
+            break;
+        default:
+            break;
+    }
+
+
     const FA_path = req.FA_path
 
-    const data = readData(data_mode, FA_path.fileAbsolutePath)
+    const data = readData(data_mode, FA_path.fileAbsolutePath, params)
 
     const arr = Object.keys(data)
 

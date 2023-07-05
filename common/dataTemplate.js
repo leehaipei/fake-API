@@ -9,8 +9,13 @@ function dataTemplate(type) {
             break;
 
         case "js":
-            template = `const data = {
+            template = `const data = params => {
 
+    let returnData = {}
+            
+// 此处可使用params参数对返回数据returnData进行处理
+            
+    return returnData
 }
             
             
