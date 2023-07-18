@@ -33,6 +33,11 @@ function returnData(req, res, next) {
 
     const arr = Object.keys(data)
 
+    var startAt = process.hrtime()
+    var diff = process.hrtime(startAt)
+    var time = diff[0] * 1e3 + diff[1] * 1e-6
+    console.log(time);
+
     if (arr.length > 0) {
         res.json({ ...data });
     } else {
