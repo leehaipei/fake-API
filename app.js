@@ -7,6 +7,7 @@ var handlePath = require('./middleWare/handlePath');
 var logger = require('./middleWare/logger');
 var dataChecker = require('./middleWare/dataChecker');
 var returnData = require('./middleWare/returnData');
+var startTiming = require('./middleWare/startTiming');
 
 // var indexRouter = require('./routes/index');
 
@@ -25,6 +26,7 @@ app.all('*', function (req, res, next) {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use((req, res, next) => startTiming(req, res, next));
 
 app.use(function (req, res, next) {
   if (req.originalUrl === '/') {
@@ -39,10 +41,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use((req, res, next) => handlePath(req, res, next));
-app.use((req, res, next) => logger(req, res, next));
 app.use((req, res, next) => dataChecker(req, res, next));
 app.use((req, res, next) => returnData(req, res, next));
-
+app.use((req, res, next) => logger(req, res, next));
 
 // app.use('*', indexRouter);
 

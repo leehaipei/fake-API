@@ -33,22 +33,18 @@ function returnData(req, res, next) {
 
     const arr = Object.keys(data)
 
-    var startAt = process.hrtime()
-    var diff = process.hrtime(startAt)
-    var time = diff[0] * 1e3 + diff[1] * 1e-6
-    console.log(time);
-
     if (arr.length > 0) {
-        res.json({ ...data });
+        res.FA_DATA = { ...data }
     } else {
         console.log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
-        res.json({
+        res.FA_DATA = {
             message: "返回数据文件未填写内容",
             file: FA_path.file,
             folderPath: FA_path.folderPath
-        });
+        }
     }
 
+    next();
 }
 
 module.exports = returnData;
