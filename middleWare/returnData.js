@@ -35,8 +35,10 @@ function returnData(req, res, next) {
 
     if (arr.length > 0) {
         res.FA_DATA = { ...data }
+        res.FA_MASSAGE = 'SUCCESS'
     } else {
         console.log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
+        res.FA_MASSAGE = '返回数据文件未填写内容'
         res.FA_DATA = {
             message: "返回数据文件未填写内容",
             file: FA_path.file,

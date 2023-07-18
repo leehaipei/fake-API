@@ -20,6 +20,7 @@ function dataChecker(req, res, next) {
             fse.writeFile(FA_path.fileAbsolutePath, dataTemplate(data_mode), (err) => {
                 if (err) {
                     console.log(`${chalk.bgRed("创建返回数据文件失败")}`);
+                    res.FA_MASSAGE = '创建返回数据文件失败'
                     res.json({
                         message: "创建返回数据文件失败",
                         file: FA_path.file,
@@ -27,6 +28,7 @@ function dataChecker(req, res, next) {
                     });
                 } else {
                     console.log(`${chalk.bgGreen("数据文件已创建，请填写返回数据")}`);
+                    res.FA_MASSAGE = '数据文件已创建，请填写返回数据'
                     res.json({
                         message: "数据文件已创建，请填写返回数据",
                         file: FA_path.file,

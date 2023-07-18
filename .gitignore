@@ -12,6 +12,7 @@
 # /build
 
 /data/*
+/record/*
 
 # misc
 .DS_Store
