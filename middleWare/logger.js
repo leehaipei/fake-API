@@ -14,7 +14,7 @@ function logger(req, res, next) {
     const resTime = time.toFixed(3) + 'ms'
     const now = moment();
 
-    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.bgGray(resTime)} ${chalk.bgBlack(now.format('YYYY/MM/DD HH:mm:ss'))}`);
+    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.white(resTime)} ${chalk.gray(now.format('YYYY/MM/DD HH:mm:ss'))} ${chalk.green(req.ip)}`);
 
 
     const appRootPath = req.FA_path.appRootPath;
@@ -33,7 +33,8 @@ function logger(req, res, next) {
                     '请求方式(request method)',
                     '响应时间(response time)',
                     '响应结果(response result)',
-                    '请求时间(request time)'
+                    '请求时间(request time)',
+                    '请求IP(request IP)'
                 ]
             ]);
 
@@ -57,7 +58,8 @@ function logger(req, res, next) {
                 req.method,
                 resTime,
                 res.FA_MASSAGE,
-                now.format('YYYY/MM/DD HH:mm:ss')
+                now.format('YYYY/MM/DD HH:mm:ss'),
+                req.ip
             ];
             // 寻找最后一行的索引
             let lastRowIndex = 2; // 第一行是表头，从第三行开始添加新行
