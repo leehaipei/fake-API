@@ -8,6 +8,9 @@ const data_mode = "js";
 // 数据文件夹名
 const data_folder_name = "data";
 
+// 数据文件夹名 *目前仅可使用excel
+const record_mode = "excel";
+
 // 记录文件夹名
 const record_folder_name = 'record'
 
@@ -20,6 +23,7 @@ module.exports = {
     server_port,
     data_mode,
     data_folder_name,
+    record_mode,
     record_folder_name,
     record_file_name
 };
