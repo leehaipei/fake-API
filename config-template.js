@@ -17,6 +17,12 @@ const record_folder_name = 'record'
 // 记录文件名
 const record_file_name = 'record_file'
 
+// 延迟返回时间
+// Boolean: true=666ms; false=0ms; Fixed value.
+// Object: { min: 0, max: 666 }; Random value.
+// Array: Random value between the maximum and minimum values in the array.
+const latency_time = false
+
 
 
 module.exports = {
@@ -25,5 +31,6 @@ module.exports = {
     data_folder_name,
     record_mode,
     record_folder_name,
-    record_file_name
+    record_file_name,
+    latency_time
 };

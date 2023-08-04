@@ -35,7 +35,8 @@ function logger(req, res, next) {
                         '响应时间(response time)',
                         '响应结果(response result)',
                         '请求时间(request time)',
-                        '请求IP(request IP)'
+                        '请求IP(request IP)',
+                        '响应等待(response latency)'
                     ]
                 ]);
 
@@ -44,7 +45,8 @@ function logger(req, res, next) {
                     { wpx: 10 },
                     { wpx: 10 },
                     { wpx: 15 },
-                    { wpx: 20 }
+                    { wpx: 20 },
+                    { wpx: 10 }
                 ];
                 XLSX.utils.book_append_sheet(workbook, worksheet, 'record');
                 XLSX.writeFile(workbook, fileAbsolutePath);
@@ -60,7 +62,8 @@ function logger(req, res, next) {
                     resTime,
                     res.FA_MASSAGE,
                     now.format('YYYY/MM/DD HH:mm:ss'),
-                    req.ip
+                    req.ip,
+                    res.FA_LATENCYTIME
                 ];
                 // 寻找最后一行的索引
                 let lastRowIndex = 2; // 第一行是表头，从第三行开始添加新行

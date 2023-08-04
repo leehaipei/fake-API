@@ -2,8 +2,7 @@ const chalk = require('chalk');
 
 const readData = require('../common/readData')
 
-const { data_mode } = require('../config')
-
+const { data_mode, latency_time } = require('../config')
 
 function returnData(req, res, next) {
 
@@ -36,6 +35,12 @@ function returnData(req, res, next) {
     if (arr.length > 0) {
         res.FA_DATA = { ...data }
         res.FA_MASSAGE = 'SUCCESS'
+        const latencyTime = require('../common/latencyTime')(latency_time)
+        res.FA_LATENCYTIME = latencyTime
+        setTimeout(() => {
+            next();
+        }, latencyTime)
+
     } else {
         console.log(`${chalk.bgMagenta("返回数据文件未填写内容")}`);
         res.FA_MASSAGE = '返回数据文件未填写内容'
@@ -44,9 +49,8 @@ function returnData(req, res, next) {
             file: FA_path.file,
             folderPath: FA_path.folderPath
         }
+        next();
     }
-
-    next();
 }
 
 module.exports = returnData;
