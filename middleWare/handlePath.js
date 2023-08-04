@@ -8,7 +8,7 @@ const { data_mode, data_folder_name } = require('../config')
 function handlePath(req, res, next) {
 
     const url = baseUrl(req.originalUrl)
-    const fileName = url.replace(/\//g, "=").slice(1)
+    const fileName = url.replace(/\//g, "-").slice(1)
     const file = fileName + "." + data_mode
     const appRootPath = appRoot.path
     const dataFilePath = appRootPath + "/" + data_folder_name + "/"
