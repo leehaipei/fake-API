@@ -14,7 +14,7 @@ function logger(req, res, next) {
     const resTime = time.toFixed(3) + 'ms'
     const now = moment();
 
-    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.white(resTime)} ${chalk.gray(now.format('YYYY/MM/DD HH:mm:ss'))} ${chalk.green(req.ip)}`);
+    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.white(resTime)} ${chalk.gray(now.format('YYYY/MM/DD HH:mm:ss'))} ${chalk.green(req.ip)} ${chalk.gray(res.FA_LATENCYTIME)}`);
 
 
     const appRootPath = req.FA_path.appRootPath;

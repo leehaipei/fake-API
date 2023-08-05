@@ -20,7 +20,7 @@ const record_file_name = 'record_file'
 // 延迟返回时间
 // Boolean: true=666ms; false=0ms; Fixed value.
 // Object: { min: 0, max: 666 }; Random value.
-// Array: Random value between the maximum and minimum values in the array.
+// Array: Fixed value, randomly taken from an array.
 const latency_time = false
 
 

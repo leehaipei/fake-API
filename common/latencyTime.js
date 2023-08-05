@@ -13,7 +13,7 @@ function latencyTime(object) {
                 return getRandomNumberBetween(0, 666)
             }
         case "Array":
-            return getRandomNumberBetween(Math.min(...object), Math.max(...object))
+            return getRandomNumberFromArray(object)
         default:
             return 0;
     }
@@ -28,4 +28,22 @@ function getRandomNumberBetween(min, max) {
     }
     const randomNumber = Math.random() * (max - min) + min;
     return Math.floor(randomNumber);
+}
+
+function getRandomNumberFromArray(array) {
+    if (array.length === 0) {
+        return 0;
+    }
+
+    const filteredArray = array.filter(item => {
+        const parsedNumber = parseFloat(item);
+        return !isNaN(parsedNumber);
+    });
+
+    if (filteredArray.length === 0) {
+        return 0;
+    }
+
+    const randomIndex = Math.floor(Math.random() * filteredArray.length);
+    return parseFloat(filteredArray[randomIndex]);
 }
