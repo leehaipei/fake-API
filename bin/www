@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var checkConfig = require('../common/checkConfig')
-
+var getIPAdress = require('../common/getIPAdress')
+const chalk = require('chalk');
 
 checkConfig().then(res => {
   /**
@@ -32,7 +33,11 @@ checkConfig().then(res => {
    * Listen on provided port, on all network interfaces.
    */
 
-  server.listen(port);
+  server.listen(port, () => {
+    const ip = 'http://' + getIPAdress() + ':' + port;
+    console.log(`${chalk.blue(ip)}`);
+  });
+
   server.on('error', onError);
   server.on('listening', onListening);
 
