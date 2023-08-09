@@ -35,7 +35,7 @@ checkConfig().then(res => {
 
   server.listen(port, () => {
     const ip = 'http://' + getIPAdress() + ':' + port;
-    console.log(`${chalk.blue(ip)}`);
+    console.log(`🔗 ${chalk.underline(chalk.blue(ip))}`);
   });
 
   server.on('error', onError);
