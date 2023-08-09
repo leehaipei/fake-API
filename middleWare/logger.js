@@ -14,7 +14,7 @@ function logger(req, res, next) {
     const resTime = time.toFixed(3) + 'ms'
     const now = moment();
 
-    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.white(resTime)} ${chalk.gray(now.format('HH:mm:ss'))} ${chalk.green(req.ip)} ${chalk.gray(res.FA_LATENCYTIME)}`);
+    console.log(`${chalk.blue(req.method)} ${chalk.cyan(req.FA_path.baseUrl)} ${chalk.white(resTime)} ${chalk.gray(now.format('HH:mm:ss'))} ${chalk.green(req.ip)} ${chalk.gray(res.FA_LATENCYTIME || 0)}`);
 
 
     const appRootPath = req.FA_path.appRootPath;
@@ -63,7 +63,7 @@ function logger(req, res, next) {
                     res.FA_MASSAGE,
                     now.format('YYYY/MM/DD HH:mm:ss'),
                     req.ip,
-                    res.FA_LATENCYTIME
+                    res.FA_LATENCYTIME || 0
                 ];
                 // 寻找最后一行的索引
                 let lastRowIndex = 2; // 第一行是表头，从第三行开始添加新行
