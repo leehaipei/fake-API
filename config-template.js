@@ -23,8 +23,6 @@ const record_file_name = 'record_file'
 // Array: Fixed value, randomly taken from an array.
 const latency_time = false
 
-// 检查更新
-const check_update = false
 
 
 
@@ -36,6 +34,5 @@ module.exports = {
     record_mode,
     record_folder_name,
     record_file_name,
-    latency_time,
-    check_update
+    latency_time
 };
