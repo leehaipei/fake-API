@@ -32,7 +32,7 @@
 1. `npm install`
 2. 使用 `config-template.js` 模板文件创建 `config.js` 
 3. `npm start`
-4. 直接访问接口url（http://localhost:xxxx/xxxxxxxx/xxx）
+4. 直接访问接口url http://localhost:xxxx/xxxxxxxx/xxx
 5. 在已配置的文件夹下自动生成的文件中填写返回数据
 6. 再次访问url,获得返回数据
 
@@ -69,6 +69,6 @@ For front-end development using scaffolding, you can simply change the baseUrl.
 1. `npm install`
 2. Create `config.js` using `config-template.js` template file.
 3. `npm start`
-4. Direct access to the interface url（http://localhost:xxxx/xxxxxxxx/xxx）.
+4. Direct access to the interface url http://localhost:xxxx/xxxxxxxx/xxx .
 5. Fill in the return data in the automatically generated file under the configured folder.
 6. Re-visit the url to get the returned data.
