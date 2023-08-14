@@ -16,6 +16,6 @@ nodemon({ script: './bin/www' })
             const color = '#' + Math.random().toString(16).substr(2, 6);
             logger += chalk.bold.hex(color)(readyStr[i])
         }
-        logger += chalk.green(' is ready')
+        logger += chalk.bold.green(' Ready')
         console.log(logger);
     })
