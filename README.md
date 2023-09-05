@@ -25,6 +25,10 @@
 
 对于使用脚手架所进行的前端开发，仅需改变baseUrl即可
 
+### *共享使用
+
+甚至，你可以把服务分享给小伙伴一起使用！
+
 
 
 ### 使用步骤 
@@ -62,6 +66,9 @@ Keep a record of requests for easy backtracking.
 
 For front-end development using scaffolding, you can simply change the baseUrl.
 
+### *create service
+
+Even, you can share the service with your partners to use together!
 
 
 ### Usage steps
