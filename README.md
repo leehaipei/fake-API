@@ -1,81 +1,138 @@
+# Fake API
 
-![repository-open-graph](repository-open-graph.png)
+## 项目概述
 
-*模拟接口返回数据*
+Fake API 是一个轻量级的模拟接口服务工具，专为前后端分离开发设计。它允许前端开发者在后端接口未完成前，通过简单配置即可快速创建模拟接口，实现独立开发和测试。
 
+## 功能特性
 
+- **前后端分离开发**：前端可独立于后端进行开发，无需等待后端接口就绪
+- **简单易用**：基于 Node.js 环境，使用直观，学习成本低
+- **灵活扩展**：支持根据请求参数返回不同数据，满足复杂业务场景
+- **请求记录**：自动保存请求记录，便于调试和回溯
+- **开发无侵入**：仅需修改前端项目的 baseUrl 即可切换到模拟接口
+- **支持共享**：可将服务部署后分享给团队成员共同使用
 
-### 前后端分离
+## 安装步骤
 
-可以让前端独立于后端进行开发
+1. 克隆或下载项目到本地
+2. 进入项目根目录，执行 `npm install` 安装依赖
+3. 使用 `config-template.js` 模板文件创建 `config.js` 配置文件
+4. 执行 `npm start` 启动服务
 
-### 用法简单
+## 配置说明
 
-符合直觉；使用前端开发皆有的nodejs环境
+### 配置文件结构
 
-### 方便扩展 
+通过 `config.js` 文件可以配置以下参数：
 
-可根据调用接口时的传参进行不用数据的返回
+- `port`：服务端口号，默认为 3000
+- `apiDir`：接口数据文件存储目录，默认为 `api`
+- `logDir`：请求日志存储目录，默认为 `logs`
+- `cors`：是否允许跨域请求，默认为 `true`
 
-### 请求记录 
+### 配置示例
 
-保存请求的记录，便于回溯
+```javascript
+module.exports = {
+  port: 3000,
+  apiDir: 'api',
+  logDir: 'logs',
+  cors: true
+};
+```
 
-### *开发无侵入
+## 使用方法
 
-对于使用脚手架所进行的前端开发，仅需改变baseUrl即可
+### 1. 启动服务
 
-### *共享使用
+```bash
+npm start
+```
 
-甚至，你可以把服务分享给小伙伴一起使用！
+服务启动后，将在控制台输出服务地址，默认格式为 `http://localhost:3000`。
 
+### 2. 创建接口
 
+直接访问需要模拟的接口 URL，例如：
 
-### 使用步骤 
+```
+http://localhost:3000/api/users
+http://localhost:3000/api/articles/1
+```
 
-1. `npm install`
-2. 使用 `config-template.js` 模板文件创建 `config.js` 
-3. `npm start`
-4. 直接访问接口url http://localhost:xxxx/xxxxxxxx/xxx
-5. 在已配置的文件夹下自动生成的文件中填写返回数据
-6. 再次访问url,获得返回数据
+### 3. 编写返回数据
 
+访问接口后，系统会在配置的 `apiDir` 目录下自动生成对应的 JSON 文件，例如：
 
+- `api/api/users.json`
+- `api/api/articles/1.json`
 
-------
+在生成的 JSON 文件中填写需要返回的数据，例如：
 
+```json
+{
+  "code": 200,
+  "message": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "张三",
+      "age": 25
+    },
+    {
+      "id": 2,
+      "name": "李四",
+      "age": 30
+    }
+  ]
+}
+```
 
+### 4. 再次访问接口
 
-###  front-end and back-end separation
+保存 JSON 文件后，再次访问相同的接口 URL，即可获得配置的返回数据。
 
-Allows the front-end to develop independently of the back-end.
+## 高级功能
 
-### simple usage
+### 根据请求参数返回不同数据
 
-Intuitive; uses a nodejs environment that is common to all front-end developers.
+Fake API 支持根据请求参数（如查询参数、请求体）返回不同数据。你可以在 JSON 文件名中使用占位符，例如：
 
-### easy to expand
+- `api/api/users/[id].json`：匹配 `http://localhost:3000/api/users/1`、`http://localhost:3000/api/users/2` 等
+- `api/api/users?name=[name].json`：匹配 `http://localhost:3000/api/users?name=张三`、`http://localhost:3000/api/users?name=李四` 等
 
-Returns unused data according to the parameters passed when calling the interface.
+### 支持多种请求方法
 
-### request logging
+Fake API 支持 GET、POST、PUT、DELETE 等多种 HTTP 请求方法。对于不同的请求方法，你可以创建不同的文件，例如：
 
-Keep a record of requests for easy backtracking.
+- `api/api/users.GET.json`：处理 GET 请求
+- `api/api/users.POST.json`：处理 POST 请求
+- `api/api/users.PUT.json`：处理 PUT 请求
+- `api/api/users.DELETE.json`：处理 DELETE 请求
 
-### *development without intrusion
+## 常见问题
 
-For front-end development using scaffolding, you can simply change the baseUrl.
+### Q：如何修改服务端口？
+A：在 `config.js` 文件中修改 `port` 参数即可。
 
-### *create service
+### Q：如何查看请求日志？
+A：请求日志会自动保存在配置的 `logDir` 目录下，按日期生成日志文件。
 
-Even, you can share the service with your partners to use together!
+### Q：是否支持 HTTPS？
+A：目前暂不支持 HTTPS，仅支持 HTTP。
 
+### Q：如何处理跨域请求？
+A：在 `config.js` 文件中设置 `cors: true` 即可允许跨域请求。
 
-### Usage steps
+## 贡献指南
 
-1. `npm install`
-2. Create `config.js` using `config-template.js` template file.
-3. `npm start`
-4. Direct access to the interface url http://localhost:xxxx/xxxxxxxx/xxx .
-5. Fill in the return data in the automatically generated file under the configured folder.
-6. Re-visit the url to get the returned data.
+欢迎提交 Issue 和 Pull Request！
+
+## 许可证
+
+MIT License
+
+---
+
+[English Version](README.en.md)
