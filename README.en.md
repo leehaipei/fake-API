@@ -1,3 +1,5 @@
+![repository-open-graph](repository-open-graph.png)
+
 # Fake API
 
 ## Project Overview
